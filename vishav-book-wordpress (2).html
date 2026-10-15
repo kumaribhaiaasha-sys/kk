@@ -1,0 +1,1634 @@
+<!-- Vishav Book — WordPress Custom HTML block -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=DM+Sans:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+#vb{
+  --bg:#ffffff;
+  --black:#eef2ed;
+  --panel:#ffffff;
+  --yellow:#2563eb;
+  --red:#1d4ed8;
+  --text:#19271f;
+  --sub:#526158;
+  --line:#dce4dd;
+  color:var(--text);
+  background:var(--bg);
+  font:15px/1.65 'DM Sans',sans-serif;
+  overflow:hidden
+}
+
+#vb *{box-sizing:border-box}
+#vb a{text-decoration:none}
+#vb button{cursor:pointer;font:inherit}
+#vb .wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+#vb .section{padding:88px 0;scroll-margin-top:72px}
+
+#vb h1,
+#vb h2,
+#vb h3{
+  font-family:'Barlow Condensed',sans-serif;
+  line-height:.95;
+  text-transform:uppercase;
+  margin:0;
+  font-weight:900
+}
+
+#vb h2{font-size:clamp(43px,6vw,73px)}
+#vb h3{font-size:27px}
+#vb p{color:var(--sub)}
+#vb .center{text-align:center;max-width:740px;margin:0 auto 45px}
+#vb .center p{margin:18px auto 0;max-width:640px}
+
+#vb .tag{
+  display:inline-block;
+  border:1px solid var(--red);
+  border-radius:30px;
+  padding:6px 14px;
+  color:var(--red);
+  font-size:11px;
+  font-weight:900;
+  text-transform:uppercase;
+  margin-bottom:17px
+}
+
+#vb .tag:before{content:'● ';color:var(--red)}
+
+#vb .btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border:1px solid var(--yellow);
+  border-radius:30px;
+  background:var(--yellow);
+  color:#ffffff;
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  padding:13px 22px;
+  min-height:45px;
+  transition:.25s;
+  white-space:normal;
+  text-align:center
+}
+
+#vb .btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 6px 24px #2563eb55
+}
+
+#vb .btn.line{
+  background:transparent;
+  color:var(--text);
+  border-color:var(--text)
+}
+
+#vb header{
+  height:70px;
+  position:sticky;
+  top:0;
+  z-index:30;
+  background:#ffffffee;
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(14px)
+}
+
+#vb header .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:100%;
+  gap:18px
+}
+
+#vb .logo{
+  font:900 27px 'Barlow Condensed',sans-serif;
+  color:var(--text);
+  white-space:nowrap
+}
+
+#vb .logo b{color:var(--red)}
+#vb .logo i{color:#2563eb;font-style:normal}
+#vb nav{display:flex;gap:22px}
+
+#vb nav a,
+#vb footer a{
+  color:var(--text);
+  font-size:12px;
+  font-weight:700
+}
+
+#vb nav a:hover,
+#vb footer a:hover{color:var(--red)}
+
+#vb #menu{display:none}
+
+#vb #mobile{
+  display:none;
+  background:#ffffff;
+  padding:16px 20px;
+  flex-direction:column;
+  gap:15px;
+  border-bottom:1px solid var(--line)
+}
+
+#vb #mobile a{color:var(--text)}
+
+/* White opening section — background photo removed */
+#vb .hero{
+  position:relative;
+  min-height:660px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  background:#ffffff;
+  color:var(--text)
+}
+
+#vb .hero .wrap{padding:65px 0}
+
+#vb h1{
+  font-size:clamp(56px,9vw,122px);
+  max-width:1050px;
+  margin:auto
+}
+
+#vb h1 strong{
+  display:block;
+  color:var(--yellow);
+  text-shadow:0 0 45px #2563eb60
+}
+
+#vb .hero p{
+  max-width:650px;
+  margin:24px auto;
+  color:var(--sub);
+  font-size:17px
+}
+
+#vb .hero .tag{
+  color:var(--red);
+  border-color:var(--red)
+}
+
+#vb .hero .btn.line{
+  color:var(--text);
+  border-color:var(--text)
+}
+
+#vb .actions{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:25px
+}
+
+#vb .trust{
+  color:var(--text);
+  font-size:12px;
+  font-weight:700
+}
+
+#vb .trust span{margin:0 9px}
+#vb .trust span:before{content:'✓ ';color:var(--yellow)}
+
+#vb .ticker{
+  background:var(--yellow);
+  color:#ffffff;
+  overflow:hidden;
+  height:42px;
+  display:flex;
+  align-items:center
+}
+
+#vb .ticker div{
+  display:flex;
+  width:max-content;
+  white-space:nowrap;
+  animation:marquee 32s linear infinite;
+  font:900 18px 'Barlow Condensed',sans-serif
+}
+
+#vb .ticker span{padding-right:42px}
+#vb .ticker span:after{content:' ✦';color:#ffffff}
+
+#vb .proofs{
+  overflow:hidden;
+  background:#ffffff
+}
+
+#vb .phones{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:15px;
+  min-height:370px
+}
+
+#vb .phone{
+  flex:0 0 178px;
+  width:178px;
+  height:316px;
+  border:5px solid #19271f;
+  border-radius:18px;
+  background:var(--panel);
+  color:var(--text);
+  padding:0;
+  text-align:center;
+  overflow:hidden;
+  transition:.45s;
+  box-shadow:0 15px 35px #19271f24;
+  transform:rotate(var(--tilt))
+}
+
+#vb .phone.active{
+  height:347px;
+  flex-basis:200px;
+  border-color:#2563eb;
+  box-shadow:0 8px 30px #2563eb33;
+  z-index:1
+}
+
+#vb .phone:hover{transform:translateY(-8px)}
+
+#vb .phone .top{
+  background:#19271f;
+  color:#ffffff;
+  text-align:left;
+  padding:11px;
+  font-size:10px;
+  height:66px
+}
+
+#vb .phone .top strong{display:block;margin-top:6px}
+
+#vb .phone .tick{
+  display:grid;
+  place-items:center;
+  margin:15px auto 6px;
+  border-radius:50%;
+  width:30px;
+  height:30px;
+  background:var(--yellow);
+  color:#ffffff
+}
+
+#vb .phone small{color:var(--sub)}
+
+#vb .phone .amount{
+  display:block;
+  font-size:20px;
+  font-weight:900;
+  margin:2px 0 10px
+}
+
+#vb .phone .row{
+  display:flex;
+  justify-content:space-between;
+  gap:5px;
+  padding:9px 12px;
+  border-top:1px solid var(--line);
+  font-size:10px
+}
+
+#vb .phone .row span{color:var(--sub)}
+
+#vb .controls{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  margin:15px 0
+}
+
+#vb .arrow{
+  border:1px solid var(--line);
+  background:#ffffff;
+  color:var(--text);
+  border-radius:50%;
+  width:42px;
+  height:42px;
+  font-size:24px
+}
+
+#vb #dots{display:flex;gap:6px}
+
+#vb #dots button{
+  width:8px;
+  height:8px;
+  padding:0;
+  border:0;
+  border-radius:10px;
+  background:var(--line)
+}
+
+#vb #dots button.on{
+  background:var(--red);
+  width:22px
+}
+
+#vb .disclaimer{
+  display:block;
+  text-align:center;
+  color:var(--sub);
+  font-size:11px
+}
+
+#vb .reels{
+  background:#ffffff;
+  border-top:1px solid var(--line)
+}
+
+#vb .reelrow{
+  display:flex;
+  gap:16px;
+  overflow:auto;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none;
+  padding:12px 0 24px
+}
+
+#vb .reelrow::-webkit-scrollbar{display:none}
+
+#vb .reel{
+  position:relative;
+  flex:0 0 220px;
+  aspect-ratio:9/16;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--black);
+  scroll-snap-align:center;
+  padding:0;
+  text-align:left
+}
+
+#vb .reel video{
+  width:100%;
+  height:100%;
+  object-fit:cover
+}
+
+#vb .reel:after{
+  content:'';
+  position:absolute;
+  inset:50% 0 0;
+  background:linear-gradient(transparent,#000d);
+  pointer-events:none
+}
+
+#vb .badge{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:var(--yellow);
+  color:#ffffff;
+  border-radius:20px;
+  padding:4px 10px;
+  font-size:10px;
+  font-weight:900;
+  z-index:2
+}
+
+#vb .reel .play{
+  position:absolute;
+  top:49%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:2;
+  border:1px solid var(--yellow);
+  border-radius:50%;
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  color:var(--yellow);
+  background:#101b17bb;
+  box-shadow:0 0 22px #2563eb60
+}
+
+#vb .reel .who{
+  position:absolute;
+  bottom:12px;
+  left:10px;
+  z-index:2;
+  color:#ffffff;
+  font-size:12px;
+  font-weight:900
+}
+
+#vb .reel .who small{
+  display:block;
+  font-weight:400
+}
+
+#vb .photo{
+  background:#ffffff;
+  padding:72px 0;
+  border-top:1px solid var(--line)
+}
+
+#vb .split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center
+}
+
+#vb .photo img{
+  width:100%;
+  aspect-ratio:1.3;
+  object-fit:cover;
+  border-radius:6px;
+  box-shadow:0 20px 45px #19271f24
+}
+
+#vb .photo p{margin:20px 0}
+
+#vb .grid3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px
+}
+
+#vb .grid4{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px
+}
+
+#vb .tile{
+  background:#ffffff;
+  border:1px solid var(--line);
+  border-radius:7px;
+  padding:28px;
+  transition:.3s
+}
+
+#vb .tile:hover{
+  transform:translateY(-6px);
+  border-color:#2563eb;
+  box-shadow:0 12px 25px #19271f14
+}
+
+#vb .tile .num{
+  font:900 62px 'Barlow Condensed',sans-serif;
+  color:var(--red)
+}
+
+#vb .tile h3{margin:12px 0}
+#vb .tile p{font-size:13px;margin-bottom:0}
+
+#vb .callout{
+  background:#f5f7f3;
+  text-align:center;
+  padding:75px 20px;
+  border-block:1px solid var(--line)
+}
+
+#vb .callout h2{
+  margin:0 auto;
+  max-width:750px
+}
+
+#vb .callout p{
+  max-width:580px;
+  margin:20px auto
+}
+
+#vb .plans{background:#ffffff}
+
+#vb .plan{
+  display:flex;
+  flex-direction:column
+}
+
+#vb .plan.popular{
+  border:2px solid #2563eb;
+  box-shadow:0 10px 28px #19271f14
+}
+
+#vb .plan small{
+  color:var(--red);
+  text-transform:uppercase;
+  font-weight:900
+}
+
+#vb .plan h3{
+  margin:12px 0 20px;
+  font-size:32px
+}
+
+#vb .price{
+  background:#eff6ff;
+  padding:15px;
+  color:#19271f;
+  font:900 40px 'Barlow Condensed',sans-serif
+}
+
+#vb .price small{
+  display:block;
+  color:#526158;
+  font:700 10px 'DM Sans',sans-serif
+}
+
+#vb .detail{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  border-bottom:1px solid var(--line);
+  padding:11px 0;
+  font-size:12px
+}
+
+#vb .detail span{color:var(--sub)}
+#vb .plan .btn{margin-top:auto}
+#vb .note{font-size:11px}
+#vb .process{background:#ffffff}
+#vb .process .split{gap:55px}
+
+#vb .process .step{
+  border-top:1px solid var(--line);
+  padding:18px 0
+}
+
+#vb .receipt{
+  background:#ffffff;
+  border:1px solid var(--line);
+  padding:30px;
+  border-radius:7px;
+  box-shadow:0 20px 45px #19271f14
+}
+
+#vb .receipt h3{
+  text-align:center;
+  margin-bottom:12px
+}
+
+#vb .total{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#eff6ff;
+  padding:14px;
+  margin-top:18px
+}
+
+#vb .total b{
+  font:900 33px 'Barlow Condensed',sans-serif;
+  color:#19271f
+}
+
+#vb .faq{background:#ffffff}
+#vb .faqlist{max-width:800px;margin:auto}
+#vb details{border-bottom:1px solid var(--line)}
+
+#vb summary{
+  cursor:pointer;
+  font:800 23px 'Barlow Condensed',sans-serif;
+  text-transform:uppercase;
+  padding:19px 4px
+}
+
+#vb details p{margin:0;padding:0 4px 20px}
+
+#vb footer{
+  background:#ffffff;
+  border-top:1px solid var(--line);
+  padding:25px 0
+}
+
+#vb footer .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap
+}
+
+#vb footer small{color:var(--sub)}
+
+#vb footer .links{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap
+}
+
+#vb .modal{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  background:#050807ef;
+  display:grid;
+  place-items:center;
+  padding:20px
+}
+
+#vb .modal video{
+  max-height:85vh;
+  max-width:90vw;
+  aspect-ratio:9/16;
+  background:#000000
+}
+
+#vb .close{
+  position:absolute;
+  top:18px;
+  right:18px;
+  background:var(--yellow);
+  color:#ffffff;
+  border:0;
+  border-radius:50%;
+  width:45px;
+  height:45px;
+  font-size:24px
+}
+
+#vb .reveal{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .7s,transform .7s
+}
+
+#vb .reveal.show{
+  opacity:1;
+  transform:none
+}
+
+@keyframes marquee{
+  to{transform:translateX(-50%)}
+}
+
+@media(max-width:900px){
+  #vb nav,
+  #vb header .apply{display:none}
+
+  #vb #menu{
+    display:block;
+    background:#ffffff;
+    border:1px solid var(--line);
+    color:var(--text);
+    font-size:22px;
+    width:40px;
+    height:40px
+  }
+
+  #vb .grid4{grid-template-columns:repeat(2,1fr)}
+
+  #vb .grid3{
+    grid-template-columns:1fr;
+    max-width:550px;
+    margin:auto
+  }
+}
+
+@media(max-width:650px){
+  #vb .section{padding:70px 0}
+  #vb .hero{min-height:660px}
+  #vb h1{font-size:clamp(52px,14vw,75px)}
+  #vb .split,
+  #vb .grid4{grid-template-columns:1fr}
+  #vb .phones{gap:10px;min-height:310px}
+  #vb .phone{flex-basis:145px;height:270px}
+  #vb .phone.active{flex-basis:160px;height:290px}
+  #vb .phone .row{font-size:9px}
+  #vb .reel{flex-basis:180px}
+  #vb .trust span{display:inline-block}
+  #vb .photo{padding:65px 0}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #vb *,
+  #vb *:before,
+  #vb *:after{
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important
+  }
+
+  #vb .reveal{
+    opacity:1;
+    transform:none
+  }
+}
+</style>
+
+<div id="vb">
+  <header>
+    <div class="wrap">
+      <a href="#vb-top" class="logo">
+        <i>✎</i> VISHAV <b>BOOK</b>
+      </a>
+
+      <nav>
+        <a href="#vb-how">How It Works</a>
+        <a href="#vb-why">Why Us</a>
+        <a href="#vb-plans">Project Plans</a>
+        <a href="#vb-process">Payment Process</a>
+        <a href="#vb-faq">FAQ</a>
+      </nav>
+
+      <a
+        class="btn apply"
+        href="https://t.me/+jQOfJExQEiQ1ODFl"
+        target="_blank"
+        rel="noopener"
+      >
+        Apply now →
+      </a>
+
+      <button
+        id="menu"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+    </div>
+
+    <div id="mobile">
+      <a href="#vb-how">How It Works</a>
+      <a href="#vb-why">Why Us</a>
+      <a href="#vb-plans">Project Plans</a>
+      <a href="#vb-process">Payment Process</a>
+      <a href="#vb-faq">FAQ</a>
+      <a
+        href="https://t.me/+jQOfJExQEiQ1ODFl"
+        target="_blank"
+        rel="noopener"
+      >
+        Apply on Telegram →
+      </a>
+    </div>
+  </header>
+
+  <section class="hero" id="vb-top">
+    <div class="wrap">
+      <span class="tag">Handwriting projects from home</span>
+
+      <h1>
+        Turn your handwriting into
+        <strong>assured earnings</strong>
+      </h1>
+
+      <p>
+        Earn ₹25,000 – ₹35,000 per project. Handwritten project work for
+        freelancers, students, homemakers, and part-time workers across India.
+      </p>
+
+      <div class="actions">
+        <a
+          class="btn"
+          href="https://t.me/+jQOfJExQEiQ1ODFl"
+          target="_blank"
+          rel="noopener"
+        >
+          Apply for project →
+        </a>
+
+        <a class="btn line" href="#vb-plans">
+          See project plans
+        </a>
+      </div>
+
+      <div class="trust">
+        <span>No prior experience</span>
+        <span>Flexible work hours</span>
+        <span>Pan India delivery</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker">
+    <div>
+      <span>HANDWRITING PROJECTS</span>
+      <span>WORK FROM HOME</span>
+      <span>FLEXIBLE WORK HOURS</span>
+      <span>PAN-INDIA DELIVERY</span>
+      <span>BANK &amp; UPI PAYOUTS</span>
+      <span>WRITER SUPPORT</span>
+      <span>HANDWRITING PROJECTS</span>
+      <span>WORK FROM HOME</span>
+      <span>FLEXIBLE WORK HOURS</span>
+      <span>PAN-INDIA DELIVERY</span>
+      <span>BANK &amp; UPI PAYOUTS</span>
+      <span>WRITER SUPPORT</span>
+    </div>
+  </div>
+
+  <section class="section proofs" id="vb-payouts">
+    <div class="wrap">
+      <div class="center reveal">
+        <span class="tag">Payment examples</span>
+        <h2>A closer look at payouts.</h2>
+        <p>
+          Explore the payment amounts shown on the reference page. Verify any
+          receipt and the full project terms before paying a registration fee.
+        </p>
+      </div>
+
+      <div class="phones" id="phones"></div>
+
+      <div class="controls">
+        <button class="arrow" id="prev" aria-label="Previous payment example">
+          ‹
+        </button>
+
+        <div id="dots"></div>
+
+        <button class="arrow" id="next" aria-label="Next payment example">
+          ›
+        </button>
+      </div>
+
+      <small class="disclaimer">
+        Illustrative summaries, not transaction verification
+      </small>
+    </div>
+  </section>
+
+  <section class="section reels" id="vb-videos">
+    <div class="wrap">
+      <div class="center reveal">
+        <span class="tag">Writer stories</span>
+        <h2>Watch earning reviews &amp; stories.</h2>
+        <p>
+          Video experiences shared on the reference platform by people
+          discussing handwriting project work.
+        </p>
+      </div>
+
+      <div class="reelrow" id="reelrow"></div>
+
+      <div class="controls">
+        <button class="arrow" id="rprev" aria-label="Previous videos">
+          ‹
+        </button>
+
+        <button class="arrow" id="rnext" aria-label="Next videos">
+          ›
+        </button>
+      </div>
+
+      <small class="disclaimer">
+        Writer stories as shared on the reference platform — not verified
+        payouts
+      </small>
+    </div>
+  </section>
+
+  <section class="photo">
+    <div class="wrap split">
+      <img
+        src="https://project--b0843fc6-0678-470a-9443-6aff2f179344.lovable.app/__l5e/assets-v1/72a55e8f-c657-4c35-9d6e-fa65f8b8932a/writing-desk.jpg"
+        alt="Handwriting project work at home"
+        loading="lazy"
+      >
+
+      <div class="reveal">
+        <span class="tag">Real work. Your own pace.</span>
+        <h2>Make your words work for you.</h2>
+        <p>
+          Choose an assignment that fits your schedule. Write from the comfort
+          of home and submit your completed pages for review.
+        </p>
+        <a class="btn line" href="#vb-how">How it works →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="vb-how">
+    <div class="wrap">
+      <div class="center reveal">
+        <span class="tag">How it works</span>
+        <h2>Simple steps to get started.</h2>
+        <p>
+          Choose your preferred project, complete the handwriting pages at your
+          own pace, and submit your work for review.
+        </p>
+      </div>
+
+      <div class="grid3">
+        <div class="tile reveal">
+          <span class="num">01</span>
+          <h3>Select a project</h3>
+          <p>
+            Choose an available project that matches your writing speed and
+            daily availability.
+          </p>
+        </div>
+
+        <div class="tile reveal">
+          <span class="num">02</span>
+          <h3>Get your instructions</h3>
+          <p>
+            Share your registration details and review requirements before
+            starting.
+          </p>
+        </div>
+
+        <div class="tile reveal">
+          <span class="num">03</span>
+          <h3>Complete &amp; submit</h3>
+          <p>
+            Finish the assigned pages within the deadline and submit them for
+            review.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="callout">
+    <div class="wrap reveal">
+      <span class="tag">New projects available</span>
+      <h2>Ready to pick up your pen?</h2>
+      <p>
+        Explore current assignment options and confirm all terms before
+        applying.
+      </p>
+
+      <a
+        class="btn"
+        href="https://t.me/+jQOfJExQEiQ1ODFl"
+        target="_blank"
+        rel="noopener"
+      >
+        Apply for a project →
+      </a>
+    </div>
+  </section>
+
+  <section class="section" id="vb-why">
+    <div class="wrap">
+      <div class="center reveal">
+        <span class="tag">Why freelancers choose us</span>
+        <h2>A simpler way to work from home.</h2>
+        <p>
+          Flexible handwriting opportunities designed to fit around your
+          schedule.
+        </p>
+      </div>
+
+      <div class="grid4">
+        <div class="tile reveal">
+          <span class="num">✎</span>
+          <h3>Project selection</h3>
+          <p>Choose assignments based on the time you have available.</p>
+        </div>
+
+        <div class="tile reveal">
+          <span class="num">↗</span>
+          <h3>Bank &amp; UPI payout</h3>
+          <p>Payment options depend on your project terms.</p>
+        </div>
+
+        <div class="tile reveal">
+          <span class="num">✓</span>
+          <h3>Simple onboarding</h3>
+          <p>Clear, legible handwriting is the main skill.</p>
+        </div>
+
+        <div class="tile reveal">
+          <span class="num">✆</span>
+          <h3>Writer support</h3>
+          <p>
+            Ask about materials, deadlines and payment before you start.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section plans" id="vb-plans">
+    <div class="wrap">
+      <div class="center reveal">
+        <span class="tag">Earning tiers</span>
+        <h2>Available handwriting project plans.</h2>
+        <p>
+          Compare timelines and writing requirements. Confirm fees, refunds and
+          payout conditions before registering.
+        </p>
+      </div>
+
+      <div class="grid3">
+        <article class="tile plan reveal">
+          <small>Starter project</small>
+          <h3>EX-7 day project</h3>
+
+          <div class="price">
+            <small>Advertised project payout</small>
+            ₹25,000
+          </div>
+
+          <div class="detail">
+            <span>Duration</span>
+            <b>7 Days</b>
+          </div>
+
+          <div class="detail">
+            <span>Daily workload</span>
+            <b>7 Pages / Day</b>
+          </div>
+
+          <div class="detail">
+            <span>Total pages</span>
+            <b>49 Pages</b>
+          </div>
+
+          <div class="detail">
+            <span>Writing style</span>
+            <b>Capital letters</b>
+          </div>
+
+          <div class="detail">
+            <span>Registration fee</span>
+            <b>₹499</b>
+          </div>
+
+          <p class="note">
+            Check refund eligibility and the written agreement before paying.
+          </p>
+
+          <a
+            class="btn"
+            href="https://t.me/+jQOfJExQEiQ1ODFl"
+            target="_blank"
+            rel="noopener"
+          >
+            Apply for 7-day project →
+          </a>
+        </article>
+
+        <article class="tile plan popular reveal">
+          <small>Recommended tier</small>
+          <h3>EX-10 day project</h3>
+
+          <div class="price">
+            <small>Advertised project payout</small>
+            ₹30,000
+          </div>
+
+          <div class="detail">
+            <span>Duration</span>
+            <b>10 Days</b>
+          </div>
+
+          <div class="detail">
+            <span>Daily workload</span>
+            <b>10 Pages / Day</b>
+          </div>
+
+          <div class="detail">
+            <span>Total pages</span>
+            <b>150 Pages</b>
+          </div>
+
+          <div class="detail">
+            <span>Writing style</span>
+            <b>Capital letters</b>
+          </div>
+
+          <div class="detail">
+            <span>Registration fee</span>
+            <b>₹799</b>
+          </div>
+
+          <p class="note">
+            Check refund eligibility and the written agreement before paying.
+          </p>
+
+          <a
+            class="btn"
+            href="https://t.me/+jQOfJExQEiQ1ODFl"
+            target="_blank"
+            rel="noopener"
+          >
+            Apply for 10-day project →
+          </a>
+        </article>
+
+        <article class="tile plan reveal">
+          <small>Advanced tier</small>
+          <h3>EX-15 day project</h3>
+
+          <div class="price">
+            <small>Advertised project payout</small>
+            ₹35,000
+          </div>
+
+          <div class="detail">
+            <span>Duration</span>
+            <b>15 Days</b>
+          </div>
+
+          <div class="detail">
+            <span>Daily workload</span>
+            <b>15 Pages / Day</b>
+          </div>
+
+          <div class="detail">
+            <span>Total pages</span>
+            <b>150 Pages</b>
+          </div>
+
+          <div class="detail">
+            <span>Writing style</span>
+            <b>Capital letters</b>
+          </div>
+
+          <div class="detail">
+            <span>Registration fee</span>
+            <b>₹999</b>
+          </div>
+
+          <p class="note">
+            Check refund eligibility and the written agreement before paying.
+          </p>
+
+          <a
+            class="btn"
+            href="https://t.me/+jQOfJExQEiQ1ODFl"
+            target="_blank"
+            rel="noopener"
+          >
+            Apply for 15-day project →
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section process" id="vb-process">
+    <div class="wrap split">
+      <div class="reveal">
+        <span class="tag">Payout process</span>
+        <h2>From your pages to your payout.</h2>
+        <p>
+          Understand submission and review before committing to a project.
+        </p>
+
+        <div class="step">
+          <h3>1. Submit your work</h3>
+          <p>
+            Send completed pages as instructed. The team reviews your
+            submission.
+          </p>
+        </div>
+
+        <div class="step">
+          <h3>2. Receive payment</h3>
+          <p>
+            Once approved, payment is processed to the agreed bank account or
+            UPI ID under your terms.
+          </p>
+        </div>
+      </div>
+
+      <div class="receipt reveal">
+        <h3>Example payout breakdown</h3>
+
+        <small class="disclaimer">
+          Illustrative only — confirm your actual agreement
+        </small>
+
+        <div class="detail">
+          <span>Base writing payout</span>
+          <b>₹29,000</b>
+        </div>
+
+        <div class="detail">
+          <span>On-time bonus</span>
+          <b>₹4,000</b>
+        </div>
+
+        <div class="detail">
+          <span>Quality incentive</span>
+          <b>₹2,000</b>
+        </div>
+
+        <div class="detail">
+          <span>Illustrative charges</span>
+          <b>₹0</b>
+        </div>
+
+        <div class="total">
+          <span>Example total</span>
+          <b>₹35,000</b>
+        </div>
+
+        <small class="disclaimer">
+          Actual payments depend on written terms and approval.
+        </small>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq" id="vb-faq">
+    <div class="wrap">
+      <div class="center reveal">
+        <span class="tag">Got questions?</span>
+        <h2>Frequently asked questions.</h2>
+        <p>Things to know before starting a handwriting project.</p>
+      </div>
+
+      <div class="faqlist">
+        <details>
+          <summary>Can I work from home on paper or in a notebook?</summary>
+          <p>
+            Yes. Confirm the required materials with the team before
+            registering.
+          </p>
+        </details>
+
+        <details>
+          <summary>How do I receive project material?</summary>
+          <p>
+            Project text and instructions are provided after registration.
+            Confirm whether an online copy or physical kit is included.
+          </p>
+        </details>
+
+        <details>
+          <summary>How and when do I get paid?</summary>
+          <p>
+            The reference platform states payouts are made to a bank account or
+            UPI after submission and review. Confirm terms in writing.
+          </p>
+        </details>
+
+        <details>
+          <summary>Is there an age or qualification limit?</summary>
+          <p>
+            The reference platform says no formal degree is required. Clear,
+            legible handwriting is expected.
+          </p>
+        </details>
+
+        <details>
+          <summary>Can I take multiple projects at once?</summary>
+          <p>Contact the team to confirm eligibility and availability.</p>
+        </details>
+      </div>
+
+      <div class="center" style="margin:35px auto 0">
+        <a
+          class="btn line"
+          href="https://t.me/+jQOfJExQEiQ1ODFl"
+          target="_blank"
+          rel="noopener"
+        >
+          More questions? Chat on Telegram →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="callout">
+    <div class="wrap reveal">
+      <span class="tag">Start writing today</span>
+      <h2>Ready to start earning?</h2>
+      <p>Ask the team for full terms and current availability.</p>
+
+      <a
+        class="btn"
+        href="https://t.me/+jQOfJExQEiQ1ODFl"
+        target="_blank"
+        rel="noopener"
+      >
+        Get started on Telegram →
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <a class="logo" href="#vb-top">
+        VISHAV <b>BOOK</b>
+      </a>
+
+      <small>© 2026 Vishav Book. All rights reserved.</small>
+
+      <div class="links">
+        <a href="#vb-plans">Project plans</a>
+        <a href="#vb-process">Payment process</a>
+        <a href="#vb-faq">FAQ</a>
+        <a
+          href="https://t.me/+jQOfJExQEiQ1ODFl"
+          target="_blank"
+          rel="noopener"
+        >
+          Contact
+        </a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var root=document.getElementById('vb'),
+      $=s=>root.querySelector(s),
+      menu=$('#menu'),
+      mobile=$('#mobile');
+
+  menu.onclick=function(){
+    var open=mobile.style.display==='flex';
+    mobile.style.display=open?'none':'flex';
+    menu.textContent=open?'☰':'✕';
+    menu.setAttribute('aria-expanded',String(!open));
+  };
+
+  mobile.querySelectorAll('a').forEach(a=>a.onclick=()=>{
+    mobile.style.display='none';
+    menu.textContent='☰';
+    menu.setAttribute('aria-expanded','false');
+  });
+
+  var names=[
+        'Pooja Gupta',
+        'Anamika Srivastava',
+        'Bharti Rajwansi',
+        'Anjali Jain',
+        'Divya Malik',
+        'Hemant Sharma',
+        'Swati Gupta'
+      ],
+      amounts=[
+        '₹41,500',
+        '₹39,500',
+        '₹36,500',
+        '₹34,500',
+        '₹31,500',
+        '₹29,500',
+        '₹27,600'
+      ],
+      active=1,
+      phones=$('#phones'),
+      dots=$('#dots');
+
+  function draw(){
+    phones.innerHTML='';
+    dots.innerHTML='';
+
+    for(var o=-2;o<=2;o++){
+      let i=(active+o+names.length)%names.length,
+          b=document.createElement('button');
+
+      b.className='phone'+(o===0?' active':'');
+      b.style.setProperty('--tilt',o*2+'deg');
+      b.setAttribute(
+        'aria-label',
+        'View illustrative payment for '+names[i]
+      );
+
+      b.innerHTML=
+        '<div class="top">'+
+          'Payment overview'+
+          '<strong>Example transaction</strong>'+
+        '</div>'+
+        '<div class="tick">✓</div>'+
+        '<small>Amount shown</small>'+
+        '<b class="amount">'+amounts[i]+'</b>'+
+        '<div class="row">'+
+          '<span>Recipient</span>'+
+          '<b>'+names[i]+'</b>'+
+        '</div>'+
+        '<div class="row">'+
+          '<span>Method</span>'+
+          '<b>UPI transfer</b>'+
+        '</div>'+
+        '<div class="row">'+
+          '<span>Example status</span>'+
+          '<b>Completed</b>'+
+        '</div>';
+
+      b.onclick=()=>{
+        active=i;
+        draw();
+      };
+
+      phones.appendChild(b);
+    }
+
+    names.forEach((name,i)=>{
+      let b=document.createElement('button');
+
+      b.className=i===active?'on':'';
+      b.setAttribute('aria-label','Show example '+(i+1));
+
+      b.onclick=()=>{
+        active=i;
+        draw();
+      };
+
+      dots.appendChild(b);
+    });
+  }
+
+  draw();
+
+  $('#prev').onclick=()=>{
+    active=(active+names.length-1)%names.length;
+    draw();
+  };
+
+  $('#next').onclick=()=>{
+    active=(active+1)%names.length;
+    draw();
+  };
+
+  var visible=false,
+      paused=false,
+      section=$('#vb-payouts');
+
+  new IntersectionObserver(
+    e=>visible=e[0].isIntersecting,
+    {threshold:.2}
+  ).observe(section);
+
+  section.onmouseenter=()=>paused=true;
+  section.onmouseleave=()=>paused=false;
+  section.onfocusin=()=>paused=true;
+
+  section.onfocusout=e=>{
+    if(!section.contains(e.relatedTarget)){
+      paused=false;
+    }
+  };
+
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    setInterval(()=>{
+      if(visible&&!paused&&document.visibilityState==='visible'){
+        active=(active+1)%names.length;
+        draw();
+      }
+    },3500);
+  }
+
+  var base=
+        'https://project--b0843fc6-0678-470a-9443-6aff2f179344.lovable.app/__l5e/assets-v1/',
+      data=[
+        [
+          'f414e173-6d7a-4ec3-9d34-92b6238e0082/reel-1.webm',
+          'Priya Sharma',
+          'Pune • Homemaker',
+          '₹22,000'
+        ],
+        [
+          '35a015b4-1ee8-4e6b-9d4b-c82de18c317f/reel-2.webm',
+          'Aman Verma',
+          'Lucknow • Student',
+          '₹10,000'
+        ],
+        [
+          'f0163cf1-e216-4cec-9e77-622e9cb6fe60/reel-3.webm',
+          'Sneha Patel',
+          'Ahmedabad • Freelancer',
+          '₹45,000'
+        ],
+        [
+          '2953fc30-4d80-43b3-9478-5408402930f9/reel-4.webm',
+          'Rahul Deshmukh',
+          'Nagpur • Professional',
+          '₹22,000'
+        ],
+        [
+          '1589e848-8a25-48a8-b445-d325db6fe2cf/reel-5.webm',
+          'Ananya Roy',
+          'Kolkata • Teacher',
+          '₹45,000'
+        ],
+        [
+          '1589e848-8a25-48a8-b445-d325db6fe2cf/reel-5.webm',
+          'Kavita Nair',
+          'Kochi • Homemaker',
+          '₹22,000'
+        ]
+      ],
+      track=$('#reelrow');
+
+  data.forEach((r,i)=>{
+    let b=document.createElement('button');
+
+    b.className='reel';
+    b.setAttribute('aria-label','Play video from '+r[1]);
+
+    b.innerHTML=
+      '<video autoplay muted loop playsinline preload="auto" src="'+
+        base+r[0]+
+      '"></video>'+
+      '<span class="badge">'+r[3]+' payout shown</span>'+
+      '<span class="play">▶</span>'+
+      '<span class="who">'+
+        r[1]+
+        '<small>'+r[2]+'</small>'+
+      '</span>';
+
+    b.onclick=()=>openVideo(i);
+    track.appendChild(b);
+  });
+
+  $('#rprev').onclick=()=>{
+    track.scrollBy({
+      left:-240,
+      behavior:'smooth'
+    });
+  };
+
+  $('#rnext').onclick=()=>{
+    track.scrollBy({
+      left:240,
+      behavior:'smooth'
+    });
+  };
+
+  var obs=new IntersectionObserver(entries=>entries.forEach(e=>{
+    let v=e.target;
+
+    if(e.isIntersecting){
+      v.play().catch(()=>{});
+    }else{
+      v.pause();
+    }
+  }),{threshold:.25});
+
+  track.querySelectorAll('video').forEach(v=>obs.observe(v));
+
+  function openVideo(i){
+    let overlay=document.createElement('div');
+
+    overlay.className='modal';
+    overlay.setAttribute('role','dialog');
+    overlay.setAttribute('aria-modal','true');
+    overlay.setAttribute(
+      'aria-label',
+      'Video from '+data[i][1]
+    );
+
+    overlay.innerHTML=
+      '<video controls autoplay playsinline loop src="'+
+        base+data[i][0]+
+      '"></video>'+
+      '<button class="close" aria-label="Close video">×</button>';
+
+    root.appendChild(overlay);
+    document.body.style.overflow='hidden';
+
+    let video=overlay.querySelector('video');
+    video.play().catch(()=>{});
+
+    function close(){
+      video.pause();
+      overlay.remove();
+      document.body.style.overflow='';
+      document.removeEventListener('keydown',key);
+    }
+
+    function key(e){
+      if(e.key==='Escape'){
+        close();
+      }
+    }
+
+    document.addEventListener('keydown',key);
+    overlay.querySelector('.close').onclick=close;
+
+    overlay.onclick=e=>{
+      if(e.target===overlay){
+        close();
+      }
+    };
+  }
+
+  var reveal=new IntersectionObserver(entries=>entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+      reveal.unobserve(e.target);
+    }
+  }),{threshold:.1});
+
+  root.querySelectorAll('.reveal').forEach(el=>reveal.observe(el));
+})();
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1782694403040496');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1782694403040496&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
